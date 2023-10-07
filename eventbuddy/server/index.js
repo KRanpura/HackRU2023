@@ -46,17 +46,13 @@ app.put("/users/addUserEvent", async (req, res) => {
 })
 
 // Fetch and update user events using email/pass
-app.put('/users/addUserEvent/:email/:password/:event', async (req, res) => { 
-    const {email, password, task} = req.params;
+app.put('/users/addUserEvent/:email/:password/:eventName', async (req, res) => { 
+    const {email, password, eventName} = req.params;
     const user = await UserModel.findOne({email, password}).exec();
     if (!user) {
         return res.status(404).json({message: 'User not found' });
     }
-    const events = {
-        eventName: task,
-        completed: false
-    }
-    user.tasks.push(tasks);
+    user.events.push(eventName);
     await user.save();
     res.status(200).json(user);
 });

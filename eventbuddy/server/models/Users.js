@@ -37,7 +37,7 @@ const UserSchema = new mongoose.Schema ({
         default: []
     },
     events: {
-        type: [EventModel],
+        type: [String],
         default: []
     }
 })
