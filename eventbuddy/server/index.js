@@ -4,6 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const cors = require('cors');
+const EventModel = require('./models/Events');
+const { v4: uuidv4 } = require('uuid'); //make sure to import this
 
 app.use(express.json());
 app.use(cors());
@@ -14,6 +16,7 @@ mongoose.connect(
     mongodb_url
 );
 
+//gives us a list of all users
 app.get("/users/getUsers", (req, res) => { 
     UserModel.find({}, (err, result) => {
         if (err) {
@@ -24,6 +27,7 @@ app.get("/users/getUsers", (req, res) => {
     });
 });
 
+//creates a new user
 app.post("/users/createUser", async (req, res) => {  
     try {
       const user = req.body;
@@ -35,15 +39,24 @@ app.post("/users/createUser", async (req, res) => {
     }
 });
 
-app.put("/users/addUserEvent", async (req, res) => {
+//create event with name, description, etc.
+app.post("/events/createEvent/:interest/:activity/:desc/:location/:date_time", async (req, res) => { 
     try {
-        const event = req.body;
-        const user = req.body;
-
+      const {interest, activity, desc, location, date_time} = req.params;
+      const newEvent = new EventModel({
+        id: uuidv4(),
+        interest, 
+        activity, 
+        desc, 
+        location, 
+        date_time
+      });
+      await newEvent.save();
+      res.status(200).json(newEvent);
     } catch (error) {
-
+      res.status(500).json({message: "Failed to create event", error: error });
     }
-})
+});
 
 // Fetch and update user events using email/pass
 app.put('/users/addUserEvent/:email/:password/:eventName', async (req, res) => { 
@@ -54,6 +67,22 @@ app.put('/users/addUserEvent/:email/:password/:eventName', async (req, res) => {
     }
     user.events.push(eventName);
     await user.save();
+    res.status(200).json(user);
+});
+
+//updates attendees of an event
+app.put('/events/addEventAttendees/:email/:password/:id', async (req, res) => {
+    const {email, password, id} = req.params;
+    const event = await EventModel.findOne({id}).exec(); 
+    if (!event) {
+        return res.status(404).json({message: 'Event not found'});
+    }
+    const user = await UserModel.findOne({email, password}).exec();
+    if (!user) {
+        return res.status(404).json({message: 'User not found'});
+    }
+    event.attendees.push(user);
+    await event.save();
     res.status(200).json(user);
 });
 
