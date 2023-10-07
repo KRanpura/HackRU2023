@@ -1,5 +1,6 @@
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const EventModel = require('./Events');
 
 const UserSchema = new mongoose.Schema ({
     firstName: {
@@ -35,6 +36,10 @@ const UserSchema = new mongoose.Schema ({
         type: [],
         default: []
     },
+    events: {
+        type: [EventModel],
+        default: []
+    }
 })
 
 const UserModel = mongoose.model("users", UserSchema);

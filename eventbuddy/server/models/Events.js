@@ -3,19 +3,30 @@ const mongoose = require('mongoose')
 const UserModel = require('./Users')
 
 const EventSchema = new mongoose.Schema ({
-    eventName: {
+    id: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
+    interest: { //social, academic, service, or career
+        type: String, 
+        required: true,
+        minlength: 1, 
+        maxlength: 20
+    },
+    activity: { //name of actual activity, like career fair, hospital visit, study session, parties, etc. 
         type: String, 
         required: true,
         minlength: 1,
         maxlength: 40
     },
-    description: {
+    desc: { //description of event
         type: String, 
         required: true, 
         minlength: 1,
         maxlength: 200
     },
-    location: {
+    location: { //location of event
         type: String, 
         required: true,
         minlength: 1,
