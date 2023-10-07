@@ -69,7 +69,7 @@ function Signup() {
   return (
     <div className="Signup">
     <h1>Sign Up</h1>
-    {step==1 &&( 
+    {step===1 &&( 
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
