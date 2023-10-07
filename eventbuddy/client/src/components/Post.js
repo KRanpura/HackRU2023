@@ -35,6 +35,17 @@ function Post()
                         <option value="service">Servive Event</option>
                         <option value="career">Career Event</option>
                     </select>
+                    Choose an interest category:
+                </label>
+                        className = "form-control"
+                        type ="text"
+                        id = "desc"
+                        name ="desc"
+                        value={desc}
+                        onChange ={(event) =>setActivity(event.target.value)}
+                        placeholder = "Activity"
+                <label>
+
                 </label>
                 
             </form>
