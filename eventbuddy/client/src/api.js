@@ -14,7 +14,7 @@ export const updatePost = async(post)=> {
     return response;
 }
 
-export const getPost = async()=> {
+export const getPost = async(interest)=> {
     const response = await axios.get(`${API_URL}/events/getEvents`);
     return response;
 }
