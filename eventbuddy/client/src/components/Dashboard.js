@@ -44,27 +44,30 @@ function Dashboard() {
         <div className="container mx-auto py-8 text-center">
         <h1 className="text-3xl font-semibold mb-4">User Dashboard</h1>
         <h2 className="text-2xl font-semibold mb-4">Hello {firstName} {lastName}!</h2>
-        <ul className="grid gap-4">
-          {userEvents.map((event) => (
-            <li key={event.id} className="border p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">{event.activity}</h3>
-              <p className="text-gray-600 mt-2">{event.desc}</p>
-              <p className="text-gray-700 mt-2">Location: {event.location}</p>
-              <p className="text-gray-700">Date/Time: {event.date_time}</p>
-              {/* Add other event details you want to display */}
-            </li>
-          ))}
-        </ul>
-        <ul>
+        <h2>Events you are attending:</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {userEvents.map((event) => (
+          <div key={event.id} className="border rounded-lg shadow-md text-left p-4">
+            <h3 className="text-xl font-semibold">{event.activity}</h3>
+            <p className="text-gray-600 mt-2">{event.desc}</p>
+            <p className="text-gray-700 mt-2">Location: {event.location}</p>
+            <p className="text-gray-700">Date/Time: {event.date_time}</p>
+            {/* Add other event details you want to display */}
+          </div>
+        ))}
+      </div>
+      <h2>Events you made:</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {creatorEvents.map((event) => (
-            <li key={event.id} className="border p-4 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold">{event.activity}</h3>
-              <p className="text-gray-600 mt-2">{event.desc}</p>
-              <p className="text-gray-700 mt-2">Location: {event.location}</p>
-              <p className="text-gray-700">Date/Time: {event.date_time}</p>
-            </li>
-          ))}
-        </ul>
+          <div key={event.id} className="border rounded-lg shadow-md text-left p-4">
+            <h3 className="text-xl font-semibold">{event.activity}</h3>
+            <p className="text-gray-600 mt-2">{event.desc}</p>
+            <p className="text-gray-700 mt-2">Location: {event.location}</p>
+            <p className="text-gray-700">Date/Time: {event.date_time}</p>
+            {/* Add other event details you want to display */}
+          </div>
+        ))}
+      </div>
         {/* Add navigation links or other content as needed */}
       </div>
     );
