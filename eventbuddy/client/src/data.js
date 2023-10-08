@@ -29,5 +29,12 @@ export const projects = [
         "Join us as we work together to learn about the different aspects of sign language and a new topic of signs! We also do ice breakers, attempt to use our signs in casual conversation, and play games like telephone, charades, and ASL jeopardy!!",
       link: "https://rutgers.campuslabs.com/engage/event/9354802",
     },
+    {
+        title: "Rutgers Chess Club Meeting",
+        subtitle: "Chess Club",
+        description:
+          "Come by and play chess",
+        link: "https://rutgers.campuslabs.com/engage/event/9392695",
+      },
   ];
   
