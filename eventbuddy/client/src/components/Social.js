@@ -28,22 +28,27 @@ function Social() {
 };
 
   return (
-    <div className="social">
-      <h1>Social Events</h1>
-      <ul>
-        {socialEvents.map((event) => (
-          <li key={event.id}>
-            <h3>{event.activity}</h3>
-            <p>{event.desc}</p>
-            <p>Location: {event.location}</p>
-            <p>Date/Time: {event.date_time}</p>
-            {/* Add other event details you want to display */}
-            <button onClick={() => handleAttendingClick(event.id)}>Attending</button>
-          </li>
-        ))}
-      </ul>
-      {/* Add navigation links or other content as needed */}
-    </div>
+    <div className="container mx-auto py-8">
+    <h1 className="text-3xl font-semibold mb-4">Social Events</h1>
+    <ul className="grid gap-4">
+      {socialEvents.map((event) => (
+        <li key={event.id} className="border p-4 rounded-lg shadow-md">
+          <h3 className="text-xl font-semibold">{event.activity}</h3>
+          <p className="text-gray-600 mt-2">{event.desc}</p>
+          <p className="text-gray-700 mt-2">Location: {event.location}</p>
+          <p className="text-gray-700">Date/Time: {event.date_time}</p>
+          {/* Add other event details you want to display */}
+          <button
+            onClick={() => handleAttendingClick(event.id)}
+            className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+          >
+            Attending
+          </button>
+        </li>
+      ))}
+    </ul>
+    {/* Add navigation links or other content as needed */}
+  </div>
   );
 }
 
