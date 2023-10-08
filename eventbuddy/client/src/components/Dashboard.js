@@ -1,17 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import {addEventAttendees, getAllUserEvents} from '../api'
 import { getPost } from '../api';
-
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
-    const [socialEvents, setSocialEvents] = useState([]);
+    const [userEvents, setUserEvents] = useState([]);
     const firstName = sessionStorage.getItem('firstName');
     const lastName = sessionStorage.getItem('lastName');
-
+    const email = sessionStorage.getItem('email');
+    useEffect(() => {
+      // Fetch social events when the component mounts
+      async function fetchUserEvents() {
+        try {
+          const response = await getAllUserEvents(email);
+          if (response.status === 200) {
+            setUserEvents(response.data); // Update the state with social events
+          }
+        } catch (error) {
+          console.error('Error fetching career events:', error);
+        }
+      }
+  
+      fetchUserEvents();
+    }, []);
     return (
         <div className="container mx-auto py-8 text-center">
         <h1 className="text-3xl font-semibold mb-4">User Dashboard</h1>
+        <h2 className="text-2xl font-semibold mb-4">Hello {firstName} {lastName}!</h2>
         <ul className="grid gap-4">
-          {socialEvents.map((event) => (
+          {userEvents.map((event) => (
             <li key={event.id} className="border p-4 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold">{event.activity}</h3>
               <p className="text-gray-600 mt-2">{event.desc}</p>

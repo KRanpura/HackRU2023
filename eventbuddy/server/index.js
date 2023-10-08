@@ -38,8 +38,15 @@ app.post("/users/createUser", async (req, res) => {
       res.status(500).json({message: "Failed to create user", error: error });
     }
 });
-app.get("/events/getUserEvents/:email/:password", async (req, res) => {
-  
+app.get("/events/getUserEvents/:email", async (req, res) => {
+  try {
+    const userEmail = req.params.email;
+    const userEvents = await EventModel.find({ attendees: userEmail });
+
+    res.status(200).json(userEvents);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch user events", error: error });
+  }
 })
 //create event with name, description, etc.
 app.post("/events/createEvent", async (req, res) => { 
@@ -72,8 +79,11 @@ app.patch('/events/addEventAttendees/:email/:password/:id', async (req, res) => 
     if (!event) {
         return res.status(404).json({message: 'Event not found'});
     }
-    event.attendees.push(email);
-    await event.save();
+    if (!event.attendees.includes(email)) {
+      // If not, push it to the attendees array
+      event.attendees.push(email);
+      await event.save();
+  }
     res.status(200).json(email);
 });
 

@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="bg-red-500 p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <Link to="/Post" className="text-white text-2xl font-semibold">RU Attendance</Link>
+          <Link to="/Post" className="text-white text-2xl font-semibold">RUAttending?</Link>
 
           <ul className="flex space-x-4">
             <li>
@@ -23,6 +23,12 @@ function Navbar() {
             </li>
             <li>
               <Link to="/Post" className="text-white hover:text-gray-300">Post New Event</Link>
+            </li>
+            <li>
+              <Link to="/Dashboard" className="text-white hover:text-gray-300">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/Login" className="text-white hover:text-gray-300">Logout</Link>
             </li>
 
           </ul>

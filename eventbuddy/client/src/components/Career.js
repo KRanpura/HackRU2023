@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {addEventAttendees} from '../api'
 import { getPost } from '../api';
-
+import Dashboard from './Dashboard';
+import { useNavigate } from 'react-router-dom';
 function Career() {
+  const nav = useNavigate();
   const [careerEvents, setCareerEvents] = useState([]);
   const userEmail = sessionStorage.getItem('email');
   const userName = sessionStorage.getItem('name'); 
@@ -25,6 +27,7 @@ function Career() {
   const handleAttendingClick = (eventId) => {
     const response = addEventAttendees(userEmail,userName,eventId)
     console.log(response);
+    nav('/Dashboard');
 };
 
   return (
@@ -41,6 +44,7 @@ function Career() {
           <button
             onClick={() => handleAttendingClick(event.id)}
             className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg"
+            
           >
             Attending
           </button>

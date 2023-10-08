@@ -26,3 +26,7 @@ export const addEventAttendees = async(email,password,id)=> {
     const response = await axios.patch(`${API_URL}/events/addEventAttendees/${email}/${password}/${id}`);
     return response;
 }
+export const getAllUserEvents = async(email)=> { 
+    const response = await axios.get(`${API_URL}/events/getUserEvents/${email}`);
+    return response;
+}

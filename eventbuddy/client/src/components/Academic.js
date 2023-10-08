@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {addEventAttendees} from '../api'
 import { getPost } from '../api';
-
+import { useNavigate } from 'react-router-dom';
 function Academic() {
+  const nav = useNavigate();
   const [academicEvents, setAcademicEvents] = useState([]);
   const userEmail = sessionStorage.getItem('email');
   const userName = sessionStorage.getItem('name'); 
@@ -24,6 +25,7 @@ function Academic() {
   const handleAttendingClick = (eventId) => {
     const response = addEventAttendees(userEmail,userName,eventId)
     console.log(response);
+    nav('/Dashboard');
 };
 
   return (
