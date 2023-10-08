@@ -58,7 +58,7 @@ function Signup() {
       if (response.status===200)
       {
 
-        nav('/StudentPage');
+        nav('/Post');
 
       }
       console.log(response);
@@ -174,11 +174,11 @@ function Signup() {
          </label>
        </div>
      </div>
-     <button type="button" className="btn btn-primary" onClick={handleNext}>
-       Next
-     </button>
      <button type="button" className="btn btn-secondary" onClick={() => setStep(step - 1)}>
        Previous
+     </button>
+     <button type="button" className="btn btn-primary" onClick={handleNext}>
+       Submit
      </button>
      <div className="mt-3">
        Already have an account? <Link to="/Login">Log in</Link>
