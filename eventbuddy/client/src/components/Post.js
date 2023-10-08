@@ -1,13 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
-import {updatePost} from '../api';
-const { v4: uuidv4 } = require('uuid'); //make sure to import this
-=======
 import { Link } from 'react-reactor-dom';
 import { useNavigate } from 'react-router-dom';
 import { updatePost } from '../api';
->>>>>>> 9ebb6932aa987f4e336c17761b52b82d65191a57
 function Post() {
     const [activity, setActivity] = useState('');
     const [interest, setInterest] = useState('');
@@ -23,11 +18,6 @@ function Post() {
   
       // Create the post object with the form data and submission date
       const post = {
-<<<<<<< HEAD
-        id: uuidv4(),
-        activity,
-=======
->>>>>>> 9ebb6932aa987f4e336c17761b52b82d65191a57
         interest,
         activity,
         desc,
