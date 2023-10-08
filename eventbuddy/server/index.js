@@ -48,6 +48,18 @@ app.get("/events/getUserEvents/:email", async (req, res) => {
     res.status(500).json({ message: "Failed to fetch user events", error: error });
   }
 })
+app.get("/events/getCreatorEvents/:email", async (req,res) => {
+  try {
+    const userEmail = req.params.email;
+
+    // Find events created by the user
+    const creatorEvents = await EventModel.find({ creator: userEmail });
+
+    res.status(200).json(creatorEvents);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch creator events", error: error });
+  }
+});
 //create event with name, description, etc.
 app.post("/events/createEvent", async (req, res) => { 
     try {

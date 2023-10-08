@@ -30,3 +30,7 @@ export const getAllUserEvents = async(email)=> {
     const response = await axios.get(`${API_URL}/events/getUserEvents/${email}`);
     return response;
 }
+export const getCreatorEvents = async(email) => {
+    const response = await axios.get(`${API_URL}/events/getCreatorEvents/${email}`);
+    return response;
+}
