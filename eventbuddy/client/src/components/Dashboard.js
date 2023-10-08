@@ -45,8 +45,8 @@ function Dashboard() {
         <h1 className="text-3xl font-semibold mb-4">User Dashboard</h1>
         <h2 className="text-2xl font-semibold mb-4">Hello {firstName} {lastName}!</h2>
         <h2 className="text-2xl font-semibold mb-4">{firstName}'s calendar of events:</h2>
-        <div><iframe src="https://calendar.google.com/calendar/embed?src=ba0fd92a140457dae6d388c44e8207508442b36d80324847389e6e6c6fd33510%40group.calendar.google.com&ctz=America%2FNew_York" 
-        style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
+        <div className= "flex justify-center items-center"><iframe src="https://calendar.google.com/calendar/embed?src=ba0fd92a140457dae6d388c44e8207508442b36d80324847389e6e6c6fd33510%40group.calendar.google.com&ctz=America%2FNew_York" 
+        style={{marginRight: 'em'}}width="600" height="400" frameborder="0"></iframe></div>
         <h2>Events you are attending:</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {userEvents.map((event) => (

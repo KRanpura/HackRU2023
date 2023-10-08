@@ -25,7 +25,7 @@ function Academic() {
   const handleAttendingClick = (eventId) => {
     const response = addEventAttendees(userEmail,userName,eventId)
     console.log(response);
-    const response1 = makeSms(`Somebody wants to attend your event! You can find their information in your events tab!`)
+    // const response1 = makeSms(`Somebody wants to attend your event! You can find their information in your events tab!`)
     nav('/Dashboard');
 };
 
