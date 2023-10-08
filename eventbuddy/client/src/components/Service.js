@@ -4,23 +4,23 @@ import {addEventAttendees} from '../api'
 import { getPost } from '../api';
 
 function Service() {
-  const [socialEvents, setSocialEvents] = useState([]);
+  const [serviceEvents, setServiceEvents] = useState([]);
   const userEmail = sessionStorage.getItem('email');
   const userName = sessionStorage.getItem('name'); 
   useEffect(() => {
     // Fetch social events when the component mounts
-    async function fetchSocialEvents() {
+    async function fetchServiceEvents() {
       try {
         const response = await getPost('service');
         if (response.status === 200) {
-          setSocialEvents(response.data); // Update the state with social events
+          setServiceEvents(response.data); // Update the state with social events
         }
       } catch (error) {
-        console.error('Error fetching social events:', error);
+        console.error('Error fetching service events:', error);
       }
     }
 
-    fetchSocialEvents();
+    fetchServiceEvents();
   }, []);
   const handleAttendingClick = (eventId) => {
     const response = addEventAttendees(userEmail,userName,eventId)
@@ -29,9 +29,9 @@ function Service() {
 
   return (
     <div className="container mx-auto py-8">
-    <h1 className="text-3xl font-semibold mb-4">Social Events</h1>
+    <h1 className="text-3xl font-semibold mb-4">Service Events</h1>
     <ul className="grid gap-4">
-      {socialEvents.map((event) => (
+      {serviceEvents.map((event) => (
         <li key={event.id} className="border p-4 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold">{event.activity}</h3>
           <p className="text-gray-600 mt-2">{event.desc}</p>
