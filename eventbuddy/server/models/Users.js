@@ -31,7 +31,7 @@ const UserSchema = new mongoose.Schema ({
         minlength: 8,
         maxlength: 20
     },
-    topicOfInterest: {
+    interests: {
         type: [String],
         default: []
     },
