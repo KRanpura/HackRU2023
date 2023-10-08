@@ -3,6 +3,7 @@ import './Calendar.css';
 import './Calendar.css'
 
 function Calendar () {
+    displayCalendar();
     return(
         <div class="wrapper">
             <div class="container-calendar">
