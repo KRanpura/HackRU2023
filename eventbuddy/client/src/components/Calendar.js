@@ -7,8 +7,8 @@ function Calendar () {
             <div class="container-calendar">
                 <h3 id="monthAndYear"></h3>
                 <div class="button-container-calendar">
-                    <button id="previous" onclick="previous()">&#8249;</button>
-                    <button id="next" onclick="next()">&#8250;</button>
+                    <button id="previous" onClick="previous()">&#8249;</button>
+                    <button id="next" onClick="next()">&#8250;</button>
                 </div>
                 <table class="table-calendar" id="calendar" data-lang="en">
                     <thead id="thead-month"></thead>
@@ -16,7 +16,7 @@ function Calendar () {
                 </table>
                 <div class="footer-container-calendar">
                     <label for="month">Jump To: </label>
-                    <select id="month" onchange="jump()">
+                    <select id="month" onChange="jump()">
                         <option value = "0">Jan</option>
                         <option value = "1">Feb</option>
                         <option value = "2">Mar</option>
@@ -30,70 +30,69 @@ function Calendar () {
                         <option value = "10">Nov</option>
                         <option value = "11">Dec</option>
                     </select>
-                 <select id="year" onchange="jump()"></select>       
+                 <select id="year" onChange="jump()"></select>       
             </div>
         </div>
     </div>
     );
-}
-function year_range(from, until) {
-    var years = "";
-    for (var year = start; year <= end; year++) {
-        years += "<option value =" + year + ">" + year + "</option";
-    }
-    return years;
-}  
+    function year_range(from, until) {
+        var years = "";
+        for (var year = from; year <= until; year++) {
+            years += "<option value =" + year + ">" + year + "</option";
+        }
+        return years;
+    }  
 
-today = new Date();
-thisMonth = today.getMonth();
-thisYear = today.getFullYear();
-chooseYear = document.getElementById("year");
-chooseMonth = document.getElementById("month");
+let today = new Date();
+let thisMonth = today.getMonth();
+let thisYear = today.getFullYear();
+let chooseYear = document.getElementById("year");
+let chooseMonth = document.getElementById("month");
 
-createYear = generate_year_range(2021, 2024);
+let createYear = year_range(2021, 2024);
 
 document.getElementById("year").innerHTML = createYear;
 
 var calendar = document.getElementById("calendar");
 
-months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 var $dataHead = "<tr>";
-for (dhead in days) {
+for (let dhead in days) {
     $dataHead += "<th data-days='" + days[dhead] + "'>" + days[dhead] + "</th>";
 }
 $dataHead += "</tr>";
 
 document.getElementById("thead-month").innerHTML = $dataHead;
 
-monthAndYear = document.getElementById("monthAndYear");
-showCalendar(thisMonth, thisYear);
+let monthAndYear = document.getElementById("monthAndYear");
+displayCalendar(thisMonth, thisYear);
 
 function next() {
     thisYear = (thisMonth === 11) ? thisYear + 1 : thisYear;
     thisMonth = (thisMonth + 1) % 12;
-    showCalendar(thisMonth, thisYear);
+    displayCalendar(thisMonth, thisYear);
 }
 
 function previous() {
     thisYear = (thisMonth === 0) ? thisYear - 1 : thisYear;
     thisMonth = (thisMonth === 0) ? 11 : thisMonth - 1;
-    showCalendar(thisMonth, thisYear);
+    displayCalendar(thisMonth, thisYear);
 }
 
 function jump() {
     thisYear = parseInt(chooseYear.value);
     thisMonth = parseInt(chooseMonth.value);
-    showCalendar(thisMonth, thisYear);
+    displayCalendar(thisMonth, thisYear);
 }
 
 function displayCalendar(month, year) {
 
     var firstDay = (new Date( year, month ) ).getDay();
 
-    table = document.getElementById("calendar-body");
+    let table = document.getElementById("calendar-body");
 
     table.innerHTML = "";
 
@@ -101,14 +100,14 @@ function displayCalendar(month, year) {
     chooseYear.value = year;
     chooseMonth.value = month;
 
-    date = 1; //formatting all date boxes in the calendar
-    for (i = 0; i < 6; i++ ) {
+    let date = 1; //formatting all date boxes in the calendar
+    for (let i = 0; i < 6; i++ ) {
         
-        row = document.createElement("tr");
-        for (j = 0; j < 7; j++ ) {
+        let row = document.createElement("tr");
+        for (let j = 0; j < 7; j++ ) {
             if ( i === 0 && j < firstDay ) {
-                box = document.createElement( "td" );
-                boxText = document.createTextNode("");
+                let box = document.createElement( "td" );
+                let boxText = document.createTextNode("");
                 box.appendChild(boxText);
                 row.appendChild(box);
             } 
@@ -116,7 +115,7 @@ function displayCalendar(month, year) {
                 break;
             } 
             else {
-                box = document.createElement("td");
+                let box = document.createElement("td");
                 box.setAttribute("data-date", date);
                 box.setAttribute("data-month", month + 1);
                 box.setAttribute("data-year", year);
@@ -125,13 +124,17 @@ function displayCalendar(month, year) {
                 box.innerHTML = "<span>" + date + "</span>";
 
                 if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
-                    cell.className = "date-picker selected";
+                    box.className = "date-picker selected";
                 }
-                row.appendChild(cell);
+                row.appendChild(box);
                 date++;
             }
         }
-        tbl.appendChild(row);
+        table.appendChild(row);
     }
+}
+function daysInMonth(Month, Year) {
+    return 32 - new Date(Year, Month, 32).getDate();
+}
 }
 export default Calendar;
