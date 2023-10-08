@@ -79,6 +79,16 @@ app.put('/events/addEventAttendees/:email/:password/:id', async (req, res) => {
     res.status(200).json(user);
 });
 
+app.get("/events/getEvent",async,(reg,res) => {
+    EventModel.find({}, (err, result) => {
+        if (err) {
+            res.status(404).json(err);
+        } else {
+            res.status(200).json(result);
+        }
+    });
+});
+
 app.listen(port, () => {
     console.log("SERVER RUNS")
 });
