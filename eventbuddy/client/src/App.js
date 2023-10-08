@@ -5,6 +5,9 @@ import Login from './components/Login';
 import Post from './components/Post';
 import Calendar from './components/Calendar';
 import Social from './components/Social';
+import Service from './components/Service';
+import Academic from './components/Service';
+import Career from './components/Career';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -20,6 +23,9 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Post" element={<Post />} />
         <Route path="/Social" element={<Social />} />
+        <Route path="/Service" element={<Service />} />
+        <Route path="/Academic" element={<Academic />} />
+        <Route path="/Career" element={<Career />} />
         <Route path="/Calendar" element={<Calendar />} />
       </Routes>
     </BrowserRouter>
