@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Post from './components/Post';
-import Calendar from './components/Calendar';
+//import Calendar from './components/Calendar';
 import Social from './components/Social';
 import Service from './components/Service';
 import Academic from './components/Academic';
@@ -25,7 +25,6 @@ function App() {
         <Route path="/Service" element={<Service />} />
         <Route path="/Academic" element={<Academic />} />
         <Route path="/Career" element={<Career />} />
-        <Route path="/Calendar" element={<Calendar />} />
         <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
