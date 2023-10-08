@@ -79,16 +79,20 @@ app.put('/events/addEventAttendees/:email/:password/:id', async (req, res) => {
     res.status(200).json(user);
 });
 
-app.get("/events/getEvents",async(req,res) => {
-    EventModel.find({}, (err, result) => {
-        if (err) {
-            res.status(404).json(err);
-        } else {
-            res.status(200).json(result);
-        }
-    });
-});
-
+app.get("/events/getEvents/:interest", async (req, res) => {
+    try {
+      const { interest } = req.params; // Extract the interest parameter from the route
+  
+      // Create a query object with the filtering criteria
+      const query = { interest }; // Using the extracted interest parameter
+  
+      const result = await EventModel.find(query);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(404).json(err);
+    }
+  });
+  
 app.listen(port, () => {
     console.log("SERVER RUNS")
 });
