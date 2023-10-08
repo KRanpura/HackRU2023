@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {addEventAttendees} from '../api'
 import { getPost } from '../api';
 import { useNavigate } from 'react-router-dom';
+import { makeSms } from '../api';
 function Social() {
   const nav = useNavigate();
   const [socialEvents, setSocialEvents] = useState([]);
@@ -25,7 +26,7 @@ function Social() {
   }, []);
   const handleAttendingClick = (eventId) => {
     const response = addEventAttendees(userEmail,userName,eventId)
-    console.log(response);
+    const response1 = makeSms(`Somebody wants to attend your event! You can find their information in your events tab!`)
     nav('/Dashboard');
 };
 

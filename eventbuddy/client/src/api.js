@@ -34,3 +34,7 @@ export const getCreatorEvents = async(email) => {
     const response = await axios.get(`${API_URL}/events/getCreatorEvents/${email}`);
     return response;
 }
+export const makeSms = async(message) => {
+    const response = await axios.post(`${API_URL}/sms/${message}`);
+    return response;
+}

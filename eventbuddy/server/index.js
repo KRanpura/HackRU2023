@@ -5,10 +5,13 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const cors = require('cors');
 const EventModel = require('./models/Events');
-//const accountSid = process.env.accountSID;
-//const authToken = process.env.twilioAuth;
+const accountSid = process.env.accountSID;
+const authToken = process.env.twilioAuth;
+const twilioNumber = process.env.twilioNumber;
+const phoneNumber = process.env.phoneNumber;
 const { v4: uuidv4 } = require('uuid'); //make sure to import this
-//const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(accountSid, authToken);
+const { MessagingResponse } = require('twilio').twiml;
 
 app.use(express.json());
 app.use(cors());
@@ -29,7 +32,17 @@ app.get("/users/getUsers", (req, res) => {
         }
     });
 });
-
+app.post("/sms/:message", async (req, res) => {
+  const message = req.params;
+  client.messages
+  .create({
+    body: message.message,
+     from: twilioNumber,
+     to: phoneNumber
+   })
+  .then(message => console.log(message.sid));
+  res.status(200).json(message.message);
+})
 //creates a new user
 app.post("/users/createUser", async (req, res) => {  
     try {

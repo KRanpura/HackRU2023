@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { updatePost } from '../api';
+import { makeSms } from '../api';
 const { v4: uuidv4 } = require('uuid');
 function Post() {
   const [activity, setActivity] = useState('');
@@ -23,6 +24,7 @@ function Post() {
     };
 
     const response = await updatePost(post);
+    const response1 = await makeSms("Your event was posted online! We hope it goes well!");
     // Handle the API response or any other actions as needed
 
     setActivity('');
