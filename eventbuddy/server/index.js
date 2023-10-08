@@ -64,7 +64,7 @@ app.put('/users/addUserEvent/:email/:password/:eventName', async (req, res) => {
 });
 
 //updates attendees of an event
-app.put('/events/addEventAttendees/:email/:password/:id', async (req, res) => {
+app.patch('/events/addEventAttendees/:email/:password/:id', async (req, res) => {
     const {email, password, id} = req.params;
     const event = await EventModel.findOne({id}).exec(); 
     if (!event) {

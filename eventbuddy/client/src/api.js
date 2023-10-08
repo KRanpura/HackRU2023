@@ -22,3 +22,7 @@ export const getRutgersEvents = async()=> {
     const response = await axios.get("https://rutgers.campuslabs.com/engage/api/discovery/event/search?endsAfter=2023-10-08T08:00:00-04:00&orderByField=endsOn&orderByDirection=ascending&status=Approved&take=15&query")
     return response;
 }
+export const addEventAttendees = async(email,password,id)=> {
+    const response = await axios.patch(`${API_URL}/events/addEventAttendees/${email}/${password}/${id}`);
+    return response;
+}
