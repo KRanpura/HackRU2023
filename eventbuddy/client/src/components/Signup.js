@@ -150,6 +150,9 @@ function Signup() {
             >
               Next
             </button>
+            <div className="mt-3 text-gray-700">
+              Already have an account? <Link to="/Login">Log in</Link>
+            </div>
           </form>
         )}
         {step === 2 && (
