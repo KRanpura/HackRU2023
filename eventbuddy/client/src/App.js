@@ -21,6 +21,7 @@ function App() {
         <Route path="/Post" element={<Post />} />
         <Route path="/Social" element={<Social />} />
         <Route path="/Calendar" element={<Calendar />} />
+        <Route path="/Dashboard" element= {<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
