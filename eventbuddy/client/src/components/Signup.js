@@ -4,7 +4,8 @@ import { createUser} from '../api';
 import { useNavigate } from 'react-router-dom';
 function Signup() {
   const [step, setStep] = useState(1);
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -14,7 +15,7 @@ function Signup() {
   const handleNext = () => {
     // Validate input and proceed to the next step
     if (step === 1) {
-      if (!name || !email || !password || !confirmPassword) {
+      if (!firstName || !lastName || !email || !password || !confirmPassword) {
         alert('Please fill in all fields.');
         return;
       }
@@ -25,7 +26,7 @@ function Signup() {
     } else if (step === 2) {
         if(interests.length ===0)
         {
-            alert('Please select at least one interest.');
+            alert('Please selectat least one interest.');
             return;
         }
     }
@@ -50,7 +51,7 @@ function Signup() {
       return;
     }
 
-      const user = { name, email, password, interests};
+      const user = { firstName, email, password, interests};
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
 
@@ -72,16 +73,30 @@ function Signup() {
     {step===1 &&( 
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="firstName">First Name:</label>
         <input
           className="form-control"
           type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          id="firstName"
+          name="firstName"
+          value={firstName}
+          onChange={(event) => setFirstName(event.target.value)}
           required
         />
+        
+      </div>
+      <div className="form-group">
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          className="form-control"
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={lastName}
+          onChange={(event) => setLastName(event.target.value)}
+          required
+        />
+        
       </div>
       <div className="form-group">
         <label htmlFor="email">Email:</label>
@@ -174,11 +189,11 @@ function Signup() {
          </label>
        </div>
      </div>
+     <button type="button" className="btn btn-primary" onClick={handleNext}>
+       Next
+     </button>
      <button type="button" className="btn btn-secondary" onClick={() => setStep(step - 1)}>
        Previous
-     </button>
-     <button type="button" className="btn btn-primary" onClick={handleNext}>
-       Submit
      </button>
      <div className="mt-3">
        Already have an account? <Link to="/Login">Log in</Link>
