@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { updatePost } from '../api';
 const { v4: uuidv4 } = require('uuid');
-
 function Post() {
   const [activity, setActivity] = useState('');
   const [interest, setInterest] = useState('');
   const [desc, setDesc] = useState('');
   const [location, setLocation] = useState('');
   const [submitDate, setSubmitDate] = useState(null);
+  
 
   const handlePost = async (e) => {
     e.preventDefault();

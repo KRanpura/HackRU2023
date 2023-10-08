@@ -5,7 +5,10 @@ const mongoose = require('mongoose');
 const UserModel = require('./models/Users');
 const cors = require('cors');
 const EventModel = require('./models/Events');
+//const accountSid = process.env.accountSID;
+//const authToken = process.env.twilioAuth;
 const { v4: uuidv4 } = require('uuid'); //make sure to import this
+//const client = require('twilio')(accountSid, authToken);
 
 app.use(express.json());
 app.use(cors());
