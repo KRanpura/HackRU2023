@@ -48,6 +48,7 @@ function Post() {
         <h1>Make a Post</h1>
         <form onSubmit={handlePost}>
           <label>
+          What event do you want to attend?
             <input
               className="form-control"
               type="text"
@@ -57,9 +58,9 @@ function Post() {
               onChange={(event) => setActivity(event.target.value)}
               placeholder="Activity"
             />
-            What event do you want to attend?
           </label>
           <label>
+          Location:
             <input
               className="form-control"
               type="text"
@@ -69,9 +70,9 @@ function Post() {
               onChange={(event) => setLocation(event.target.value)}
               placeholder="Location"
             />
-            Location:
           </label>
           <label>
+          Choose an interest category:
             <select
               name="interest"
               id="interest"
@@ -86,9 +87,10 @@ function Post() {
               <option value="service">Service Event</option>
               <option value="career">Career Event</option>
             </select>
-            Choose an interest category:
+
           </label>
           <label>
+          Describe the Event:
             <input
               className="form-control"
               type="text"
@@ -98,7 +100,6 @@ function Post() {
               onChange={(event) => setDesc(event.target.value)}
               placeholder="Description"
             />
-            Describe the Event:
           </label>
           <button type="submit" className="btn btn-primary">
             Post
