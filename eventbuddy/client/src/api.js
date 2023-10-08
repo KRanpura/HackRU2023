@@ -9,7 +9,7 @@ export const getUser = async(email,password)=>{
     const response = await axios.get(`${API_URL}/users/getUser/${email}/${password}`);
     return response;
 }
-export const updatePost = async(interests,activity,desc,location,dateTime)=> {
-    const response = await axios.post(`${API_URL}/events/createEvent/${interests}/${activity}/${desc}/${location}/${dateTime}`);
+export const updatePost = async(post)=> {
+    const response = await axios.post(`${API_URL}/events/createEvent`,post);
     return response;
 }

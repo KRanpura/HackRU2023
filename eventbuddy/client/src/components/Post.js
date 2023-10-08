@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {updatePost} from '../api';
+const { v4: uuidv4 } = require('uuid'); //make sure to import this
 function Post() {
     const [activity, setActivity] = useState('');
     const [interest, setInterest] = useState('');
@@ -16,16 +17,17 @@ function Post() {
   
       // Create the post object with the form data and submission date
       const post = {
+        id: uuidv4(),
         activity,
         interest,
         desc,
         location,
         date_time: currentDateTime,
       };
-  
+      console.log(post);
       // Send the post data to your API for further processing
       const response = await updatePost(post);
-  
+      console.log(response);
       // Handle the API response or any other actions as needed
   
       // Clear the form fields after submission
