@@ -25,7 +25,7 @@ function Signup() {
     } else if (step === 2) {
         if(interests.length ===0)
         {
-            alert('Please selectat least one interest.');
+            alert('Please select at least one interest.');
             return;
         }
     }
