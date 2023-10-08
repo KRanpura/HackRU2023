@@ -38,7 +38,9 @@ app.post("/users/createUser", async (req, res) => {
       res.status(500).json({message: "Failed to create user", error: error });
     }
 });
-
+app.get("/events/getUserEvents/:email/:password", async (req, res) => {
+  
+})
 //create event with name, description, etc.
 app.post("/events/createEvent", async (req, res) => { 
     try {

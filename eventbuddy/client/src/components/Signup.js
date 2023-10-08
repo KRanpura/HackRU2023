@@ -53,6 +53,8 @@ function Signup() {
     }
       const user = { firstName, lastName, email, password, interests};
       sessionStorage.setItem('email', email);
+      sessionStorage.setItem('firstName',firstName);
+      sessionStorage.setItem('lastName',lastName);
       sessionStorage.setItem('password', password);
 
       const response = await createUser(user);

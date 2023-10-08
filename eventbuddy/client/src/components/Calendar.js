@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Calendar.css';
+import './Calendar.css'
 
 function Calendar () {
     return(
@@ -42,63 +43,46 @@ function Calendar () {
         }
         return years;
     }  
-
 let today = new Date();
 let thisMonth = today.getMonth();
 let thisYear = today.getFullYear();
 let chooseYear = document.getElementById("year");
 let chooseMonth = document.getElementById("month");
-
 let createYear = year_range(2021, 2024);
 document.getElementById("year").innerHTML = createYear;
-
 var calendar = document.getElementById("calendar");
-
 let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
 var $dataHead = "<tr>";
 for (let dhead in days) {
     $dataHead += "<th data-days='" + days[dhead] + "'>" + days[dhead] + "</th>";
 }
 $dataHead += "</tr>";
-
 document.getElementById("thead-month").innerHTML = $dataHead;
-
 let monthAndYear = document.getElementById("monthAndYear");
 displayCalendar(thisMonth, thisYear);
-
 function next() {
     thisYear = (thisMonth === 11) ? thisYear + 1 : thisYear;
     thisMonth = (thisMonth + 1) % 12;
     displayCalendar(thisMonth, thisYear);
 }
-
 function previous() {
     thisYear = (thisMonth === 0) ? thisYear - 1 : thisYear;
     thisMonth = (thisMonth === 0) ? 11 : thisMonth - 1;
     displayCalendar(thisMonth, thisYear);
 }
-
 function jump() {
     thisYear = parseInt(chooseYear.value);
     thisMonth = parseInt(chooseMonth.value);
     displayCalendar(thisMonth, thisYear);
 }
-
 function displayCalendar(month, year) {
-
     var firstDay = (new Date( year, month ) ).getDay();
-
     let table = document.getElementById("calendar-body");
-
     table.innerHTML = "";
-
     monthAndYear.innerHTML = months[month] + " " + year;
     chooseYear.value = year;
     chooseMonth.value = month;
-
     let date = 1; //formatting all date boxes in the calendar
     for (let i = 0; i < 6; i++ ) {
         
@@ -121,7 +105,6 @@ function displayCalendar(month, year) {
                 box.setAttribute("data-month_name", months[month]);
                 box.className = "date-picker";
                 box.innerHTML = "<span>" + date + "</span>";
-
                 if ( 
                     date === today.getDate() &&
                     year === today.getFullYear() && 

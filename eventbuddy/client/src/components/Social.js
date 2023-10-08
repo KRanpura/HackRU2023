@@ -28,7 +28,7 @@ function Social() {
 };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 text-center">
     <h1 className="text-3xl font-semibold mb-4">Social Events</h1>
     <ul className="grid gap-4">
       {socialEvents.map((event) => (

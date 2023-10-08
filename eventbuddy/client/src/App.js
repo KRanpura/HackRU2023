@@ -5,12 +5,14 @@ import Login from './components/Login';
 import Post from './components/Post';
 import Calendar from './components/Calendar';
 import Social from './components/Social';
+import Service from './components/Service';
+import Academic from './components/Academic';
+import Career from './components/Career';
 import Navbar from './components/Navbar';
-
+import Dashboard from './components/Dashboard';
 function App() {
   // Determine whether to display the Navbar based on the route
   const shouldDisplayNavbar = !['/Login', '/Signup'].includes(window.location.pathname);
-
   return (
     <BrowserRouter>
       {shouldDisplayNavbar && <Navbar />} {/* Render Navbar conditionally */}
@@ -20,11 +22,13 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Post" element={<Post />} />
         <Route path="/Social" element={<Social />} />
+        <Route path="/Service" element={<Service />} />
+        <Route path="/Academic" element={<Academic />} />
+        <Route path="/Career" element={<Career />} />
         <Route path="/Calendar" element={<Calendar />} />
-        <Route path="/Dashboard" element= {<Dashboard />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;
