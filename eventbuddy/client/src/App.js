@@ -2,8 +2,6 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './components/Signup';
 import Login from './components/Login';
-import StudentPage from './components/StudentPage';
-import './PixelArtBackground.css';
 
 function App() {
   return (
@@ -12,7 +10,6 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path = "/Signup" element = {<Signup />} />
       <Route path="/Login" element={<Login />} />
-      <Route path = "/Post" element={<StudentPage />} />
 
     </Routes>
     </BrowserRouter>
