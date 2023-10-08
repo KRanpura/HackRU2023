@@ -50,8 +50,7 @@ function Signup() {
       console.log('Passwords do not match');
       return;
     }
-
-      const user = { firstName, email, password, interests};
+      const user = { firstName, lastName, email, password, interests};
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
 
@@ -189,7 +188,7 @@ function Signup() {
          </label>
        </div>
      </div>
-     <button type="button" className="btn btn-primary" onClick={handleNext}>
+     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
        Next
      </button>
      <button type="button" className="btn btn-secondary" onClick={() => setStep(step - 1)}>
