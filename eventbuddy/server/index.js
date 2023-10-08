@@ -70,13 +70,9 @@ app.patch('/events/addEventAttendees/:email/:password/:id', async (req, res) => 
     if (!event) {
         return res.status(404).json({message: 'Event not found'});
     }
-    const user = await UserModel.findOne({email, password}).exec();
-    if (!user) {
-        return res.status(404).json({message: 'User not found'});
-    }
-    event.attendees.push(user);
+    event.attendees.push(email);
     await event.save();
-    res.status(200).json(user);
+    res.status(200).json(email);
 });
 
 app.get("/events/getEvents/:interest", async (req, res) => {
