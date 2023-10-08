@@ -92,7 +92,6 @@ app.get("/events/getEvents/:interest", async (req, res) => {
       res.status(404).json(err);
     }
   });
-  
 app.listen(port, () => {
     console.log("SERVER RUNS")
 });

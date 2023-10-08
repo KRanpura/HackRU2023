@@ -24,6 +24,7 @@ function Post() {
         desc,
         location,
         date_time: currentDateTime,
+        creator: sessionStorage.getItem('email')
       };
       console.log(post);
       // Send the post data to your API for further processing

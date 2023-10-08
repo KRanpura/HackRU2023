@@ -37,8 +37,12 @@ const EventSchema = new mongoose.Schema ({
         required: true
     },
     attendees: {
-        type: [UserModel],
+        type: [String],
         default: []
+    },
+    creator: {
+        type: String,
+        required:true,
     }
 })
 
