@@ -17,7 +17,7 @@ function Login() {
         {
           nav('/Post');
         }
-        //console.log(response); // do something with the user data, like redirect to a new page
+        console.log(response); // do something with the user data, like redirect to a new page
       } catch (error) {
         console.error(error); // handle errors
       }
