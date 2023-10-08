@@ -51,7 +51,7 @@ function Signup() {
       return;
     }
 
-      const user = { firstName, lastName, email, password, interests};
+      const user = { firstName, email, password, interests};
       sessionStorage.setItem('email', email);
       sessionStorage.setItem('password', password);
 
@@ -183,13 +183,13 @@ function Signup() {
              type="checkbox"
              value="career"
              onChange={handleInterestChange}
-             checked={interests.includes('career')}
+             checked={interests.includes('')}
            />{' '}
            Career Events
          </label>
        </div>
      </div>
-     <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+     <button type="button" className="btn btn-primary" onClick={handleNext}>
        Next
      </button>
      <button type="button" className="btn btn-secondary" onClick={() => setStep(step - 1)}>

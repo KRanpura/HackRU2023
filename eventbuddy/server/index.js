@@ -40,17 +40,10 @@ app.post("/users/createUser", async (req, res) => {
 });
 
 //create event with name, description, etc.
-app.post("/events/createEvent/:interest/:activity/:desc/:location/:date_time", async (req, res) => { 
+app.post("/events/createEvent", async (req, res) => { 
     try {
-      const {interest, activity, desc, location, date_time} = req.params;
-      const newEvent = new EventModel({
-        id: uuidv4(),
-        interest, 
-        activity, 
-        desc, 
-        location, 
-        date_time
-      });
+      const event = req.body;
+      const newEvent = new EventModel(event);
       await newEvent.save();
       res.status(200).json(newEvent);
     } catch (error) {

@@ -4,7 +4,7 @@ const UserModel = require('./Users')
 
 const EventSchema = new mongoose.Schema ({
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },
