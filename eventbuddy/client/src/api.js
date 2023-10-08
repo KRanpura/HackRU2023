@@ -15,6 +15,10 @@ export const updatePost = async(post)=> {
 }
 
 export const getPost = async(interest)=> {
-    const response = await axios.get(`${API_URL}/events/getEvents`);
+    const response = await axios.get(`${API_URL}/events/getEvents/${interest}`);
+    return response;
+}
+export const getRutgersEvents = async()=> {
+    const response = await axios.get("https://rutgers.campuslabs.com/engage/api/discovery/event/search?endsAfter=2023-10-08T08:00:00-04:00&orderByField=endsOn&orderByDirection=ascending&status=Approved&take=15&query")
     return response;
 }

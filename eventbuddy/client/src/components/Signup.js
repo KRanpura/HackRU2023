@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUser} from '../api';
 import { useNavigate } from 'react-router-dom';
+import { getRutgersEvents } from '../api';
 function Signup() {
   const [step, setStep] = useState(1);
   const [firstName, setFirstName] = useState('');
@@ -45,6 +46,8 @@ function Signup() {
     }
   };
   const handleSubmit = async (event) => {
+    const response1 = getRutgersEvents();
+    console.log(response1);
     event.preventDefault();
     if (password !== confirmPassword) {
       console.log('Passwords do not match');
