@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import './Calendar.css';
 
 function Calendar () {
     return(
@@ -50,7 +50,6 @@ let chooseYear = document.getElementById("year");
 let chooseMonth = document.getElementById("month");
 
 let createYear = year_range(2021, 2024);
-
 document.getElementById("year").innerHTML = createYear;
 
 var calendar = document.getElementById("calendar");
@@ -123,7 +122,11 @@ function displayCalendar(month, year) {
                 box.className = "date-picker";
                 box.innerHTML = "<span>" + date + "</span>";
 
-                if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
+                if ( 
+                    date === today.getDate() &&
+                    year === today.getFullYear() && 
+                    month === today.getMonth() 
+                ) {
                     box.className = "date-picker selected";
                 }
                 row.appendChild(box);
