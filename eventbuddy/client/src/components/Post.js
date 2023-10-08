@@ -18,8 +18,8 @@ function Post() {
   
       // Create the post object with the form data and submission date
       const post = {
-        activity,
         interest,
+        activity,
         desc,
         location,
         date_time: currentDateTime,
